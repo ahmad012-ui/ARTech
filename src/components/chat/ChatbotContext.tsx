@@ -43,9 +43,11 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
     setStatus("submitted");
     setError(null);
 
-    const payload = [...history, { role: "user" as const, content: text }]
-      .filter((m) => m.id !== "welcome")
-      .map((m) => ({ role: m.role, content: m.content }));
+    const payload = [
+      ...history.filter((m) => m.id !== "welcome"),
+      { id: "pending", role: "user" as const, content: text },
+    ].map((m) => ({ role: m.role, content: m.content }));
+
 
     try {
       const res = await fetch("/api/chat", {
