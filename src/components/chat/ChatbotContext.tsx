@@ -89,14 +89,13 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
       const value = text.trim();
       if (!value || status === "submitted" || status === "streaming") return;
       lastInput.current = value;
-      setMessages((prev) => {
-        const next = [...prev, { id: newId(), role: "user" as ChatRole, content: value }];
-        void run(prev, value);
-        return next;
-      });
+      const history = messagesRef.current;
+      setMessages([...history, { id: newId(), role: "user" as ChatRole, content: value }]);
+      void run(history, value);
     },
     [run, status],
   );
+
 
   const retry = useCallback(() => {
     if (!lastInput.current) return;
