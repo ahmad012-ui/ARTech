@@ -22,8 +22,8 @@ export const Route = createFileRoute("/api/chat")({
         try {
           const result = streamText({
             model: gateway("google/gemini-3.8-flash"),
+            instructions: SYSTEM_PROMPT,
             messages: [
-              { role: "system", content: SYSTEM_PROMPT },
               ...messages.slice(-20).map(
                 (m): ModelMessage => ({
                   role: m.role,
