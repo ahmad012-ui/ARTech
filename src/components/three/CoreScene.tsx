@@ -40,7 +40,7 @@ function Core({ reduced, variant }: { reduced: boolean; variant: "tech" | "cta" 
           metalness={0.95}
           roughness={0.2}
           emissive="#12333f"
-          emissiveIntensity={0.35}
+          emissiveIntensity={0.55}
           flatShading
         />
       </mesh>
