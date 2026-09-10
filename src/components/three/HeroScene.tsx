@@ -61,11 +61,17 @@ function Framework({ reduced }: { reduced: boolean }) {
           color="#0e1418"
           metalness={0.9}
           roughness={0.25}
-          emissive="#1a4152"
-          emissiveIntensity={0.45}
+          emissive="#1e4d61"
+          emissiveIntensity={1.15}
           flatShading
         />
       </mesh>
+
+      <mesh>
+        <icosahedronGeometry args={[0.97, 0]} />
+        <meshBasicMaterial wireframe color="#cfe8f5" transparent opacity={0.45} />
+      </mesh>
+
 
       <mesh rotation={[Math.PI / 2.3, 0, 0]}>
         <torusGeometry args={[2.75, 0.008, 8, 128]} />

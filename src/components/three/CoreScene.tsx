@@ -39,10 +39,16 @@ function Core({ reduced, variant }: { reduced: boolean; variant: "tech" | "cta" 
           color="#0d1317"
           metalness={0.95}
           roughness={0.2}
-          emissive="#173845"
-          emissiveIntensity={0.8}
+          emissive="#1e4d61"
+          emissiveIntensity={1.15}
+          flatShading
         />
       </mesh>
+      <mesh>
+        <icosahedronGeometry args={[0.87, 0]} />
+        <meshBasicMaterial wireframe color="#cfe8f5" transparent opacity={0.4} />
+      </mesh>
+
       {[0, 1, 2].map((i) => (
         <mesh key={i} rotation={[Math.PI / 2 + i * 0.7, i * 0.4, 0]}>
           <torusGeometry args={[2.2 + i * 0.35, 0.006, 6, 96]} />
