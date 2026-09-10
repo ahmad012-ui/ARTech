@@ -34,18 +34,18 @@ function Core({ reduced, variant }: { reduced: boolean; variant: "tech" | "cta" 
         <meshBasicMaterial wireframe color="#7fa9c9" transparent opacity={0.22} />
       </mesh>
       <mesh>
-        <icosahedronGeometry args={[0.85, 0]} />
+        <icosahedronGeometry args={[0.58, 0]} />
         <meshStandardMaterial
           color="#0d1317"
           metalness={0.95}
           roughness={0.2}
-          emissive="#1e4d61"
-          emissiveIntensity={1.15}
+          emissive="#12333f"
+          emissiveIntensity={0.35}
           flatShading
         />
       </mesh>
       <mesh>
-        <icosahedronGeometry args={[0.87, 0]} />
+        <icosahedronGeometry args={[0.6, 0]} />
         <meshBasicMaterial wireframe color="#cfe8f5" transparent opacity={0.4} />
       </mesh>
 

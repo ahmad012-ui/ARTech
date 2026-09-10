@@ -56,19 +56,19 @@ function Framework({ reduced }: { reduced: boolean }) {
       </mesh>
 
       <mesh ref={inner} castShadow>
-        <icosahedronGeometry args={[0.95, 0]} />
+        <icosahedronGeometry args={[0.62, 0]} />
         <meshStandardMaterial
           color="#0e1418"
           metalness={0.9}
           roughness={0.25}
-          emissive="#1e4d61"
-          emissiveIntensity={1.15}
+          emissive="#12333f"
+          emissiveIntensity={0.35}
           flatShading
         />
       </mesh>
 
       <mesh>
-        <icosahedronGeometry args={[0.97, 0]} />
+        <icosahedronGeometry args={[0.64, 0]} />
         <meshBasicMaterial wireframe color="#cfe8f5" transparent opacity={0.45} />
       </mesh>
 
