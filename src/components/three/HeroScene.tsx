@@ -49,20 +49,21 @@ function Framework({ reduced }: { reduced: boolean }) {
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} scale={0.78}>
       <mesh>
         <icosahedronGeometry args={[2.1, 1]} />
         <meshBasicMaterial wireframe color="#7fa9c9" transparent opacity={0.28} />
       </mesh>
 
       <mesh ref={inner} castShadow>
-        <octahedronGeometry args={[1.15, 0]} />
+        <icosahedronGeometry args={[0.95, 0]} />
         <meshStandardMaterial
           color="#0e1418"
           metalness={0.9}
           roughness={0.25}
-          emissive="#16323f"
-          emissiveIntensity={0.6}
+          emissive="#1a4152"
+          emissiveIntensity={0.45}
+          flatShading
         />
       </mesh>
 
@@ -93,7 +94,7 @@ export function HeroScene() {
   return (
     <SceneCanvas
       className="absolute inset-0"
-      camera={{ position: [0, 0, 7.2], fov: 42 }}
+      camera={{ position: [0, 0, 8.4], fov: 40 }}
       shadows={false}
     >
       <ambientLight intensity={0.35} />
