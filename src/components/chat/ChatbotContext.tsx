@@ -102,13 +102,12 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
 
   const retry = useCallback(() => {
     if (!lastInput.current) return;
-    setMessages((prev) => {
-      const trimmed = [...prev];
-      while (trimmed.length && trimmed[trimmed.length - 1]?.role === "assistant") trimmed.pop();
-      void run(trimmed.slice(0, -1), lastInput.current);
-      return trimmed;
-    });
+    const trimmed = [...messagesRef.current];
+    while (trimmed.length && trimmed[trimmed.length - 1]?.role === "assistant") trimmed.pop();
+    setMessages(trimmed);
+    void run(trimmed.slice(0, -1), lastInput.current);
   }, [run]);
+
 
   const clear = useCallback(() => {
     setMessages([welcomeMessage()]);
