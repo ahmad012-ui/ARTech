@@ -38,6 +38,9 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const lastInput = useRef<string>("");
+  const messagesRef = useRef<ChatMessage[]>(messages);
+  messagesRef.current = messages;
+
 
   const run = useCallback(async (history: ChatMessage[], text: string) => {
     setStatus("submitted");
