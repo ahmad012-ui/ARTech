@@ -38,6 +38,9 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const lastInput = useRef<string>("");
+  const messagesRef = useRef<ChatMessage[]>(messages);
+  messagesRef.current = messages;
+
 
   const run = useCallback(async (history: ChatMessage[], text: string) => {
     setStatus("submitted");
@@ -99,13 +102,12 @@ export function ChatbotProvider({ children }: { children: ReactNode }) {
 
   const retry = useCallback(() => {
     if (!lastInput.current) return;
-    setMessages((prev) => {
-      const trimmed = [...prev];
-      while (trimmed.length && trimmed[trimmed.length - 1]?.role === "assistant") trimmed.pop();
-      void run(trimmed.slice(0, -1), lastInput.current);
-      return trimmed;
-    });
+    const trimmed = [...messagesRef.current];
+    while (trimmed.length && trimmed[trimmed.length - 1]?.role === "assistant") trimmed.pop();
+    setMessages(trimmed);
+    void run(trimmed.slice(0, -1), lastInput.current);
   }, [run]);
+
 
   const clear = useCallback(() => {
     setMessages([welcomeMessage()]);
