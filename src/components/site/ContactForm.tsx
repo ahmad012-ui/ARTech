@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { supabase } from "@/lib/supabase";
+import { submitContactInquiry } from "@/lib/supabase";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
@@ -24,12 +24,6 @@ export function ContactForm() {
       return;
     }
 
-    if (!supabase) {
-      setState("error");
-      setErrorMessage("The contact form is not configured yet. Please email hello@artech.dev.");
-      return;
-    }
-
     setState("submitting");
     setErrorMessage("");
 
@@ -41,16 +35,14 @@ export function ContactForm() {
       message: String(data.get("message") ?? "").trim(),
     };
 
-    const { error } = await supabase.from("contact_inquiries").insert(inquiry);
-
-    if (error) {
+    try {
+      await submitContactInquiry(inquiry);
+      setState("success");
+      form.reset();
+    } catch {
       setState("error");
       setErrorMessage("We couldn't send your message. Please try again or email hello@artech.dev.");
-      return;
     }
-
-    setState("success");
-    form.reset();
   }
 
   return (
