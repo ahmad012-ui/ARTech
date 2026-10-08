@@ -13,6 +13,7 @@ alter table public.contact_inquiries enable row level security;
 revoke all on table public.contact_inquiries from anon, authenticated;
 grant insert on table public.contact_inquiries to anon;
 
+drop policy if exists "Anyone can submit contact inquiries" on public.contact_inquiries;
 drop policy if exists "Public can submit contact inquiries" on public.contact_inquiries;
 create policy "Public can submit contact inquiries"
   on public.contact_inquiries
