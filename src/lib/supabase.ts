@@ -1,15 +1,31 @@
-import { createClient } from "@supabase/supabase-js";
+type ContactInquiry = {
+  name: string;
+  email: string;
+  company: string | null;
+  project_type: string;
+  message: string;
+};
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
 
-if (!supabaseUrl || !supabasePublishableKey) {
-  console.warn(
-    "Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in your deployment environment.",
-  );
-}
+export async function submitContactInquiry(inquiry: ContactInquiry): Promise<void> {
+  if (!supabaseUrl || !supabasePublishableKey) {
+    throw new Error("Contact form is not configured.");
+  }
 
-export const supabase =
-  supabaseUrl && supabasePublishableKey
-    ? createClient(supabaseUrl, supabasePublishableKey)
-    : null;
+  const response = await fetch(`${supabaseUrl}/rest/v1/contact_inquiries`, {
+    method: "POST",
+    headers: {
+      apikey: supabasePublishableKey,
+      Authorization: `Bearer ${supabasePublishableKey}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(inquiry),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Contact inquiry submission failed with status ${response.status}.`);
+  }
+}
