@@ -1,6 +1,7 @@
 import { CoreScene } from "@/components/three/CoreScene";
 import { CONTACT_EMAIL } from "@/lib/chat-content";
 import { Reveal } from "./Reveal";
+import { ContactForm } from "./ContactForm";
 
 export function CTA() {
   return (
@@ -25,13 +26,10 @@ export function CTA() {
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry`}
-            className="mt-10 inline-flex rounded-full bg-foreground px-8 py-4 text-sm font-medium text-[#050505] transition-transform hover:-translate-y-0.5"
-          >
-            Start a Conversation
-          </a>
-          <p className="mt-5 font-mono text-xs text-muted-foreground">{CONTACT_EMAIL}</p>
+          <ContactForm />
+          <p className="mt-5 font-mono text-xs text-muted-foreground">
+            Prefer email? <a className="underline underline-offset-4 hover:text-foreground" href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry`}>{CONTACT_EMAIL}</a>
+          </p>
         </Reveal>
       </div>
     </section>
