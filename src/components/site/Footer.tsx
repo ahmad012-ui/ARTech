@@ -1,4 +1,4 @@
-import { BRAND, CONTACT_EMAIL } from "@/lib/chat-content";
+import { BRAND } from "@/lib/chat-content";
 import { useChatbot } from "@/components/chat/ChatbotContext";
 
 export function Footer() {
@@ -15,30 +15,12 @@ export function Footer() {
           </p>
         </div>
 
-        <nav className="flex flex-wrap items-start gap-x-10 gap-y-4 md:justify-end">
+        <nav aria-label="Footer navigation" className="flex flex-wrap items-start gap-x-10 gap-y-4 md:justify-end">
           <a
-            href="https://github.com"
+            href="#contact"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://instagram.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Instagram
-          </a>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Email
+            Contact
           </a>
         </nav>
       </div>
