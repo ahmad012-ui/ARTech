@@ -58,10 +58,10 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.55 }}
           >
             <a
-              href="#work"
+              href="#services"
               className="rounded-full bg-foreground px-7 py-3.5 text-sm font-medium text-[#050505] transition-transform hover:-translate-y-0.5"
             >
-              View Our Work
+              Explore Our Services
             </a>
             <a
               href="#contact"
