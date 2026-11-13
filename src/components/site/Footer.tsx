@@ -15,25 +15,7 @@ export function Footer() {
           </p>
         </div>
 
-        <nav className="flex flex-wrap items-start gap-x-10 gap-y-4 md:justify-end">
-          <a
-            href="https://github.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://instagram.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Instagram
-          </a>
+        <nav aria-label="Footer navigation" className="flex flex-wrap items-start gap-x-10 gap-y-4 md:justify-end">
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
