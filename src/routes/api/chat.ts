@@ -97,7 +97,7 @@ export const Route = createFileRoute("/api/chat")({
           return new Response("Invalid request body", { status: 400 });
         }
 
-        if (!Array.isArray(body.messages) || body.messages.length === 0) {
+        if (!body || !Array.isArray(body.messages) || body.messages.length === 0) {
           return new Response("Messages are required", { status: 400 });
         }
         if (body.messages.length > MAX_MESSAGES) {
