@@ -1,5 +1,5 @@
 {
-  "buildCommand": "NITRO_PRESET=vercel bun run build",
+  "buildCommand": "NITRO_PRESET=vercel npm run build",
   "headers": [
     {
       "source": "/(.*)",
@@ -26,5 +26,6 @@
         }
       ]
     }
-  ]
+  ],
+  "installCommand": "npm install --no-audit --no-fund"
 }
